@@ -3,18 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cookie Clicker Game</title>
+    <title>Biscuit Clicker Game</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>Cookie Cutter Game</h1>
+        <h1 id="main-head">Biscuit Cutter Game</h1>
+        <button id="reset-btn">Reset Game</button>
     </header>
 
-    
-    <main></main>
+
+    <main id="main-container">
+        <!-- Need 3 main sections (1 for cookie, 1 for counter, 1 for upgrade shop) -->
+        <section class="sections biscuit-maker-section">
+            <h1 id="biscuit-maker-h1">Your Biscuit Production</h1>
+            <!-- Add new divs here for each cookie maker user buys -->
+            <table class="users-work-force">
+                <tr>
+                    <th>Name</th>
+                    <th>Produces BPS (Biscuits Per Second)</th>
+                    <th>Quantity owned</th>
+                    <th>Costs (biscuits)</th>
+                    <th>Purchase</th>
+                </tr>
+                <tr>
+                    <td>Cottage Cookie Creations</td>
+                    <td id="cottage-quantity"></td>
+                    <td id="first"></td>
+                    <td id="cottage-cost">25</td>
+                    <th><button class="buttons" id="cottage-buy-btn">Buy</button></th>
+                </tr>
+                <tr>
+                    <td>Homestead Biscuit Bakery</td>
+                    <td id="homestead-quantity"></td>
+                    <td id="second"></td>
+                    <td id="homestead-cost">100</td>
+                    <th><button class="buttons" id="homestead-buy-btn">Buy</button></th>
+                </tr>
+                <tr>
+                    <td>Artisan Biscuit Works</td>
+                    <td id="artisan-quantity"></td>
+                    <td id="third"></td>
+                    <td id="artisan-cost">300</td>
+                    <th><button class="buttons" id="artisan-buy-btn">Buy</button></th>
+                </tr>
+                <tr>
+                    <td>Family Biscuit Factory</td>
+                    <td id="family-quantity"></td>
+                    <td id="fourth"></td>
+                    <td id="family-cost">400</td>
+                    <th><button class="buttons" id="family-buy-btn">Buy</button></th>
+                </tr>
+                <tr>
+                    <td>Neighborhood Biscuitery</td>
+                    <td id="neighborhood-quantity"></td>
+                    <td id="fith"></td>
+                    <td id="neighborhood-cost">500</td>
+                    <th><button class="buttons" id="neighborhood-buy-btn">Buy</button></th>
+                </tr>
+            </table>
+            
+        </section>
+
+        <section class="sections biscuit-counter-section grid-middle-container">
+            <h1 id="bakery-name">Rambo's Banging Bakery</h1>
+            <img id="biscuit" src="./biscuit.jpg" width="200px" width="300px" alt="">
+            <div id="biscuit-counter">0</div>
+            <div id="biscuit-panel-info">Biscuits</div>
+            <div id="biscuits-per-second"></div>
+        </section>
+
+        <section class="sections biscuit-upgrade-section">
+            <h1 class="store-header">Shop</h1>
+            <div id="biscuit-maker-upgrades"></div>
+            <!-- <!-- <div id="biscuit-maker-shop-container"> -->
+
+            </div>
+
+        </section>
+    </main>
 
 
 
@@ -22,3 +91,17 @@
     <footer></footer>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

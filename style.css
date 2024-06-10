@@ -4,7 +4,117 @@
     box-sizing: border-box;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+#main-head {
+    font-size: 2em;
+    background-color: rgb(98, 142, 142);
+    border: 2px solid black;
+    text-align: center;
+}
 
-h1 {
-    font-size: 3em;
+#main-container {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 1%;
+}
+.sections {
+    border: 2px solid black;
+    width: 100%;
+    height: 100vh;
+
+}
+#biscuit {
+    cursor: pointer;
+    border-radius: 1em;
+    position: absolute;
+    top: 50%;
+    left: 40%;    
+}
+#biscuit:hover {
+    scale: 1.05;
+    }
+    
+.buttons {
+    padding: 2em;
+    cursor: pointer;
+}
+.buttons:hover {
+    background-color: rgb(135, 142, 210);
+    border: 2px solid black;
+
+}
+
+.grid-middle-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    
+    /* grid-template-columns: 100%;
+    grid-template-rows: 100%; */
+    /* background-color: cadetblue; */
+
+}
+
+.store-header, #bakery-name, #biscuit-maker-h1 {
+    font-size: 2em;
+    text-align: center;
+    justify-self: center;
+    width: 100%;
+    height: 40px;
+    border: 2px solid black;
+}
+.store-header, #biscuit-maker-h1, #bakery-name{
+    background-color: rgb(135, 142, 210);
+}
+
+#biscuit-counter {
+    font-size: 5em;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    background-color: rgb(255, 255, 255);
+}
+
+.biscuit-makers {
+    cursor: pointer;
+    padding: 1em;
+    border: 2px solid black;
+}
+
+#biscuit-maker-section {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.users-work-force tr,th,td {
+    /* background-color: red; */
+    /* padding: 202px; */
+    border: 2px solid black;
+    padding: 1em;
+}
+
+#bakery-name {
+    /* padding: 2em; */
+    border: 2px solid black;
+    width: 100%;
+    height: 40px;
+}
+
+#biscuit-panel-info {
+    position: absolute;
+    top: 100px;
+    right: 10%;
+    font-size: 2em;
+    /* margin: 4em; */
+
+}
+
+.users-work-force {
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
 }
