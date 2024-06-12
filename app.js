@@ -6,8 +6,8 @@ const workForce = document.querySelector(".users-work-force");
 const workForceRows = document.querySelectorAll(".users-work-force tr th");
 
 const buyBtn1 = document.getElementById("cottage-buy-btn");
-const cottageMakerCell = document.getElementById("cottage-quantity");
-const cottageQuantity = document.getElementById("first");
+let cottageMakerCell = 0;
+let cottageQuantity = 0
 
 const buyBtn2 = document.getElementById("homestead-buy-btn");
 const homesteadMakerCell = document.getElementById("homestead-quantity");
@@ -34,7 +34,6 @@ let homesteadPurchaseCounter = 0;
 let artisanPurchaseCounter = 0;
 let familyPurchaseCounter = 0;
 let neighborhoodPurchaseCounter = 0;
-let canPurchase = false;
 
 
 //all the functions that work are stored here======================================================
@@ -57,13 +56,14 @@ function BpsCounter() {
 
 setInterval(function () { //every second counter increases by 1 and shows it to the user.
     counter = counter + bps;
-    counterDisplay.textContent = counter
+    counterDisplay.textContent = counter;
     BpsCounter()
     }, 1000); // 1000 milliseconds == 1 second
 
     biscuitImage.addEventListener("click", function() {
         counter++;
-        counterDisplay.textContent = counter
+        clickedBiscuit(biscuitImage);
+        counterDisplay.textContent = counter;
     })
 //====================================================================================================
 
@@ -101,22 +101,19 @@ let biscuitMakers = [
     },
     
 ]
-//array to keep track of how many manufacturers user has bought for when page reloads it can be retrieved with the counter
-const manufacturersTracker = [
-  {
-    name: "cottage",
-    quantity: "",
-  }
-];
 
 function buyCottage(){
   counter = counter - 25;
-  cottagePurchaseCounter = cottagePurchaseCounter +1;
-  cottageMakerCell.textContent = biscuitMakers[0].bps * cottagePurchaseCounter
-  cottageQuantity.textContent = cottagePurchaseCounter;
-  // manufacturersTracker[0].quantity++;
-  console.log(manufacturersTracker)
-}
+  cottagePurchaseCounter++;
+  cottageMakerCell = biscuitMakers[0].bps * cottagePurchaseCounter
+  cottageQuantity = cottagePurchaseCounter;
+
+  if(document.getElementById("cottage-quantity").textContent === 0) {
+    document.getElementById("cottage-quantity").textContent = retrievedCottage;
+  } else if (cottageQuantity > 0) {
+    cottageQuantity += retrievedCottage;
+  }
+} 
 
 //make functions that shows how many biscuit manufacturers you have bought and the amount of BpS they are producing   ===================
 function cottagePurchaseTrackerFunction() {
@@ -124,9 +121,29 @@ function cottagePurchaseTrackerFunction() {
     buyBtn1.addEventListener("click", () => {
        if(counter >= 25) {
         buyCottage();
+
     }})
   } 
 }
+
+//========================================================================================================================================
+//Saving all game data into Local Storage with interval.
+let retrievedCounter = localStorage.getItem("counter");
+let retrievedCottage = localStorage.getItem("cottage");
+
+setInterval(function () { 
+  localStorage.setItem("counter", counter)
+  localStorage.setItem("cottage", cottagePurchaseCounter)
+  document.getElementById("first").textContent = Number(retrievedCottage);
+  document.getElementById("cottage-quantity").textContent = Number(retrievedCottage);
+  console.log(retrievedCottage)
+  }, 1000);
+  
+  counter += Number(retrievedCounter);
+//messed up the tracking and updating of the bought cottages / local storage. Does not work.
+
+
+
 function homesteadPurchaseTrackerFunction() {
   if (buyBtn2) {
     buyBtn2.addEventListener("click", () => {
@@ -142,6 +159,7 @@ function homesteadPurchaseTrackerFunction() {
     }})
   }
 } 
+
 function artisanPurchaseTrackerFunction() {
   if (buyBtn3) {
     buyBtn3.addEventListener("click", () => {
@@ -157,6 +175,7 @@ function artisanPurchaseTrackerFunction() {
     }})
   }
 } 
+
 function familyPurchaseTrackerFunction() {
   if (buyBtn4) {
     buyBtn4.addEventListener("click", () => {
@@ -172,6 +191,7 @@ function familyPurchaseTrackerFunction() {
     }})
   }
 } 
+
 function neighborhoodPurchaseTrackerFunction() {
   if (buyBtn5) {
     buyBtn5.addEventListener("click", () => {
@@ -214,28 +234,14 @@ function resetGame() {
 resetBtn.addEventListener("click", () => {
   resetGame();
 })
-//========================================================================================================================================
-//Saving all game data into Local Storage with interval.
 
-let retrievedCounter = localStorage.getItem("counter");
-let retrievedCottage = localStorage.getItem("cottage")
-  setInterval(function () { 
-    localStorage.setItem("counter", counter)
-    localStorage.setItem("cottage", manufacturersTracker[0].quantity)
-    cottageMakerCell.textContent = cottageQuantity.textContent;
-    localStorage.setItem("cottage", manufacturersTracker[0].quantity)
-    manufacturersTracker[0].quantity = (cottageQuantity.textContent);
-    // cottageQuantity.textContent = manufacturersTracker[0].quantity;
-    // cottageMakerCell.textContent = manufacturersTracker[0].quantity;
-    console.log(cottageQuantity)
-
-    // BpsCounter()
-    }, 1000); // 1000 milliseconds == 1 second
-  counter += Number(retrievedCounter);
-  cottageMakerCell += Number(retrievedCottage);
-  // cottageQuantity.textContent += Number(retrievedCottage);
-  // Save all purchased biscuit manufacturers into the local storage and retrieve it upon page reload.  
-  //========================================================================================================================================
+//animation for the biscuit: when its clicked it adds a class and then setTimeout to remove it after animation is finished
+clickedBiscuit = (image) => {
+  image.classList.add("clicked");
+  setTimeout(() => {
+    image.classList.remove("clicked");
+  }, 200)
+};
 
 
 
@@ -251,8 +257,3 @@ let retrievedCottage = localStorage.getItem("cottage")
 
 
 
-
-
-
-// WHERE I LEFT OFF BEFORE LEAVING THE PC
-//   1) TRYING TO MAKE COST OF PURCHASE REFLECT WHETHER OR NOT USER CAN BUY THE MANUFACTURER HE WANTS

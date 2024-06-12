@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
 #main-head {
     font-size: 2em;
     background-color: rgb(98, 142, 142);
@@ -21,12 +22,14 @@
     gap: 10px;
     margin: 1%;
 }
+
 .sections {
     border: 2px solid black;
     width: 100%;
     height: 100vh;
 
 }
+
 #biscuit {
     cursor: pointer;
     border-radius: 1em;
@@ -34,29 +37,34 @@
     top: 50%;
     left: 40%;    
 }
+
 #biscuit:hover {
     scale: 1.05;
-    }
+}
+
+#biscuit {
+  transition: transform 0.2s ease-in-out;
+}
+
+#biscuit.clicked {
+  transform: scale(1.1);
+}
+
     
 .buttons {
     padding: 2em;
     cursor: pointer;
 }
+
 .buttons:hover {
     background-color: rgb(135, 142, 210);
     border: 2px solid black;
-
 }
 
 .grid-middle-container {
     display: flex;
     position: relative;
     justify-content: center;
-    
-    /* grid-template-columns: 100%;
-    grid-template-rows: 100%; */
-    /* background-color: cadetblue; */
-
 }
 
 .store-header, #bakery-name, #biscuit-maker-h1 {
@@ -67,6 +75,7 @@
     height: 40px;
     border: 2px solid black;
 }
+
 .store-header, #biscuit-maker-h1, #bakery-name{
     background-color: rgb(135, 142, 210);
 }
@@ -75,7 +84,7 @@
     font-size: 5em;
     position: absolute;
     top: 100px;
-    left: 50%;
+    left: auto;
     background-color: rgb(255, 255, 255);
 }
 
@@ -91,14 +100,11 @@
 }
 
 .users-work-force tr,th,td {
-    /* background-color: red; */
-    /* padding: 202px; */
     border: 2px solid black;
     padding: 1em;
 }
 
 #bakery-name {
-    /* padding: 2em; */
     border: 2px solid black;
     width: 100%;
     height: 40px;
@@ -106,15 +112,130 @@
 
 #biscuit-panel-info {
     position: absolute;
-    top: 100px;
-    right: 10%;
+    top: 177px;
+    right: auto;
     font-size: 2em;
-    /* margin: 4em; */
-
 }
 
 .users-work-force {
     font-size: 1.4em;
     font-weight: bold;
     text-align: center;
+}
+
+footer {
+    font-size: 1.1em;
+}
+
+#reset-btn {
+    padding: .3em;
+    color: white;
+    font-size: 1em;
+    background-color: cadetblue;
+    margin: 5px;
+}
+
+#reset-btn:hover {
+    background-color: rgb(209, 211, 234);
+    color: black;
+}
+/* Media queries */
+@media (max-width: 1700px) {
+
+    #main-container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #biscuit-panel-info {
+        position: absolute;
+        top: 180px;
+        right: auto;
+        font-size: 1.7em;
+    }
+
+    #biscuit-counter {
+        font-size: 2rem;
+        position: absolute;
+        top: 100px;
+        left: auto;
+    }
+
+    .biscuit-maker-section {
+        height: 1000px;
+        min-width: 500px;
+        font-size: 0.5rem;        
+    }
+
+    .grid-middle-container,
+    .biscuit-upgrade-section,
+    #main-container,
+    .biscuit-maker-section
+     {
+        width: 100%;
+        margin: 0 auto;
+        height: 500px;
+    }
+
+    .buttons {
+        padding: 10px;
+    }
+
+    #biscuit-maker-h1,
+    #bakery-name,
+    .store-header {
+        font-size: 30px;
+    }
+
+    #biscuit {
+        left: auto;
+    }
+
+}
+
+@media (max-width: 1500px) {
+
+    #main-container {
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+    }
+
+    #biscuit-panel-info{
+        top: 70px;
+    }
+
+    .biscuit-upgrade-section {
+        height: 500px;
+    }
+}
+
+@media (min-width:1501px){
+    #main-container {
+        margin: 20px;
+    }
+
+    .biscuit-upgrade-section {
+        width: 40%;
+        /* margin: 10px; */
+        margin: 0 20px 0 0;
+    }
+    
+    .sections {
+        height: 90vh;
+    }
+
+}
+
+@media (min-width: 768px) {
+    #main-container {
+        /* margin: 15px; */
+        height: 100%;
+        width: 100%;
+    }
+
+    .biscuit-maker-section {
+        font-size: 11.59px;
+    }
 }
